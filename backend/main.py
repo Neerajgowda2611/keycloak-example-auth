@@ -8,8 +8,7 @@ import requests
 
 app = FastAPI()
 
-# Modify CORS to be more specific in production
-origins = ["http://localhost:3000"]  # Be specific about allowed origins
+origins = ["http://localhost:3000"]  
 
 app.add_middleware(
     CORSMiddleware,
@@ -98,7 +97,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)) -> Dict:
             token,
             KEYCLOAK_PUBLIC_KEY,
             algorithms=["RS256"],
-            audience="account"
+            # audience="account"
         )
         print (payload)
         return payload
@@ -133,7 +132,3 @@ async def get_data(current_user: dict = Depends(get_current_user)):
             detail=str(e)
         )
 
-# # Optional: Add health check endpoint
-# @app.get("/health")
-# async def health_check():
-#     return {"status": "healthy"}
