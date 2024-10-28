@@ -14,22 +14,22 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["GET", "POST", "OPTIONS"],  # Be specific about allowed methods
+    allow_methods=["GET", "POST", "OPTIONS"],  
     allow_headers=["*"],
 )
 
 KEYCLOAK_URL = "https://keycloak.cialabs.org"
 KEYCLOAK_REALM = "myrealm"
-KEYCLOAK_PUBLIC_KEY = """-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxCihGzevvP38UQbRrH/6+NwW+1zSgHZcgV171AUjurD5I+JcaNaGPuUmXEnK1AOb0OtTynItDeniP8zGVX66J01LTfedVzvmZ+hCf7gvNIfR0+BBH0ENC7a251x5RbOiSDg1CAnUY6bsXrtJLsHVDVrp3kVPo1SHXyf+7MsNxXHKVB3ZtbrjiYUqinZUutobeHy1YTZTRJR/88fzLY4sSj+YB87LIO597fh7bbgDgkAkY6w8RYZtRVCVBqcb3J99vckbWxEAU1qSOAuM/Tz+5YOfepXis/jaYUxQUSNzEfCbpMO3I6T//SVAaqtJiAJc3tH9aA36HuPRxr3k1KNTqQIDAQAB\n-----END PUBLIC KEY-----"""
-KEYCLOAK_CLIENT_ID = "myclient1"
-KEYCLOAK_CLIENT_SECRET = "uPLXk7QiFsXbeXbLaVuiBgTBcgkitqOD"
+KEYCLOAK_PUBLIC_KEY = """-----BEGIN PUBLIC KEY-----\nMIIBIjANBgkqRbOaA.....TqQIDAQAB\n-----END PUBLIC KEY-----"""
+KEYCLOAK_CLIENT_ID = "your_client_id"
+KEYCLOAK_CLIENT_SECRET = "your_client_secret"
 KEYCLOAK_TOKEN_URL = f"{KEYCLOAK_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/token"
 
 oauth2_scheme = OAuth2AuthorizationCodeBearer(
     authorizationUrl=f"{KEYCLOAK_URL}/realms/{KEYCLOAK_REALM}/protocol/openid-connect/auth",
     tokenUrl=KEYCLOAK_TOKEN_URL
 )
-
+# example data that is stored in the resource server which needs to be displayed after auth
 USER_DATA = {
     "name": "user",
     "age": 22,
