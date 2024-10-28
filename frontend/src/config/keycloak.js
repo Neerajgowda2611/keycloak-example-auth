@@ -2,8 +2,8 @@ import Keycloak from 'keycloak-js';
 
 const keycloakConfig = {
   url: process.env.REACT_APP_KEYCLOAK_URL || 'https://keycloak.cialabs.org',
-  realm: process.env.REACT_APP_KEYCLOAK_REALM || 'myrealm',
-  clientId: process.env.REACT_APP_KEYCLOAK_CLIENT_ID || 'myclient1',
+  realm: process.env.REACT_APP_KEYCLOAK_REALM || 'your_realm',
+  clientId: process.env.REACT_APP_KEYCLOAK_CLIENT_ID || 'your_client_id',
 };
 
 let keycloakInstance = null;
